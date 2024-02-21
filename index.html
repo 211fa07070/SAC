@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students Activity Council Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-responsive.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
+
+        * {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-transform: capitalize;
+            text-decoration: none;
+            transition: all .5s cubic-bezier(.37, 1.14, .26, 1.24);
+        }
+
+        *::selection {
+            background: blue;
+            color: #fff;
+        }
+
+        html {
+            font-size: 62.5%;
+            overflow-x: hidden;
+        }
+
+        .btn {
+            height: 45px;
+            width: 150px;
+            background: none;
+            outline: none;
+            border: .2rem solid aqua;
+            color: #1dceed;
+            font-size: 2rem;
+            margin: 1rem 0;
+            cursor: pointer;
+            overflow: hidden;
+            z-index: 0;
+            position: relative;
+        }
+
+        .btn::before,
+        .btn::after {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: #1dceed;
+            z-index: -1;
+            transition: all 0.5s cubic-bezier(.37, 1.14, .26, 1.24);
+        }
+
+        .btn::before {
+            clip-path: polygon(0 0, 0 0, 0 0);
+        }
+
+        .btn:hover:before {
+            clip-path: polygon(0 0, 0 100%, 100% 0);
+        }
+
+        .btn::after {
+            clip-path: polygon(100% 100%, 100% 100%, 100% 100%);
+        }
+
+        .btn:hover:after {
+            clip-path: polygon(100% 0%, 0% 100%, 100% 100%);
+        }
+
+        .btn:hover {
+            color: #fff;
+        }
+
+        .social-box {
+            position: fixed;
+            bottom: 20px;
+            /* Adjust as needed */
+            right: 50%;
+            transform: translateX(50%);
+            /* Center horizontally */
+            display: flex;
+            flex-direction: column;
+            /* Stack icons vertically */
+            justify-content: center;
+            align-items: center;
+            background: none;
+            border: none;
+            padding: 10px;
+            /* Adjust spacing as needed */
+            gap: 10px;
+            /* Adjust spacing between icons */
+        }
+
+        .social-box a {
+            font-size: 20px;
+            /* Adjust icon size */
+            color: #333;
+            /* Adjust icon color */
+        }
+
+        .heading {
+            text-align: center;
+            font-size: 4rem;
+            color: #555;
+            padding: 1rem;
+            padding-top: 7rem;
+        }
+
+        .heading i {
+            color: #1dceed;
+            font-size: 2rem;
+        }
+
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fff;
+            box-shadow: 0 .1rem .3rem rgba(0, 0, 0, .3);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            padding: 1rem 5rem;
+            width: 100%;
+            height: 12%;
+        }
+
+        header .image-container1 {
+            width: 50%;
+        }
+
+        header .image-container1 img {
+            width: 50%;
+            height: auto;
+        }
+
+        header .navbar ul {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            list-style: none;
+        }
+
+        header .navbar ul li {
+            margin: 0 1rem;
+        }
+
+        header .navbar ul li a {
+            font-size: 15px;
+            padding: 20px;
+            color: #666;
+            text-decoration: none;
+        }
+
+        header .navbar ul li a:hover {
+            color: black;
+            text-decoration: underline;
+        }
+
+        header .fa-bars {
+            font-size: 3rem;
+            color: #666;
+            cursor: pointer;
+            display: none;
+        }
+
+        .home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url(images/Vfstr_image.jpg) no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .home .content {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .home .content h1 {
+            font-size: 7rem;
+            text-shadow: h-shadow v-shadow blur-radius color;
+            text-shadow: 1px 1px 0 white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white;
+            color: blue;
+        }
+
+        .home .content p {
+            font-size: 1.9rem;
+            text-shadow: h-shadow v-shadow blur-radius color;
+            text-shadow: 1px 1px 0 black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
+            color: white;
+            padding: 1rem 0;
+            width: 70rem;
+        }
+
+        .about .row {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .about .row .image {
+            flex: 1 1 40rem;
+            padding: 2rem;
+        }
+
+        .about .row .image img {
+            width: 100%;
+        }
+
+        .about .row .content {
+            flex: 1 1 40rem;
+            padding: 2rem;
+        }
+
+        .about .row .content h3 {
+            font-size: 3rem;
+            color: blue;
+        }
+
+        .about .row .content p {
+            font-size: 1.5rem;
+            color: #666;
+            padding: 1rem 0;
+        }
+
+        .about .box-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .about .box-container .box {
+            padding: 2rem 1rem;
+            text-align: center;
+            border: .2rem solid #1dceed;
+            flex: 1 1 20rem;
+            margin: 2rem;
+        }
+
+        .about .box-container .box i {
+            color: #1dceed;
+            font-size: 4rem;
+        }
+
+        .about .box-container .box h3 {
+            color: #333;
+            font-size: 2.5rem;
+            padding: 1rem 0;
+        }
+
+        .about .box-container .box p {
+            color: #666;
+            font-size: 1.7rem;
+        }
+
+        .verticles {
+            min-height: 100vh;
+        }
+
+        .verticles .card {
+            background-color: white;
+            height: 345px;
+            width: 320px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+
+        .verticles .card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .verticles .card:hover {
+            height: 355px;
+            width: 330px;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .verticles .container_card {
+            padding: 2px 16px;
+        }
+
+        .verticles .container_card h3 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .verticles .container_card h4 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .verticles .container_card p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.3;
+        }
+
+        .verticles .container_card .butn {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #333;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 16px;
+            color: #fff;
+        }
+
+        .verticles .container_card .butn:hover {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #0047b3;
+            text-decoration: underline;
+            border-radius: 4px;
+            margin-top: 16px;
+            color: #fff;
+        }
+
+
+        .verticles .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            /* Adjust column width for smaller screens */
+            gap: 10px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .gallery {
+            background-image: linear-gradient(to bottom, #ff9900, #ff0000);
+            min-height: 100vh;
+        }
+
+        .gallery .heading {
+            color: #fff;
+        }
+
+        .gallery .box-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 2rem 0;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .gallery .box-container .box {
+            flex: 1 1 30rem;
+            height: 22rem;
+            box-shadow: 0 .3rem .5rem #000;
+            overflow: hidden;
+            position: relative;
+            margin: 1rem;
+        }
+
+        .gallery .box-container .box img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .gallery .box-container .box .icons {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            background: linear-gradient(transparent, rgba(0, 0, 0, .7));
+            transform: scale(0);
+        }
+
+        .gallery .box-container .box:hover .icons {
+            top: 0;
+            transform: scale(1);
+        }
+
+        .gallery .box-container .box .icons a {
+            font-size: 3rem;
+            color: #fff;
+            margin: 3rem 0;
+            text-shadow: 0 .3rem .5rem #000;
+            transform: translateY(13rem);
+            transition-delay: calc(.2s * var(--i));
+        }
+
+        .gallery .box-container .box:hover .icons a {
+            transform: translateY(0rem);
+        }
+
+        .elections .card {
+            background-color: white;
+            height: 345px;
+            width: 320px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+
+        .elections .card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .elections .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+            height: 355px;
+            width: 330px;
+        }
+
+        .elections .container_card {
+            padding: 2px 16px;
+        }
+
+        .elections .container_card h3 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .elections .container_card h4 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .elections .container_card p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.3;
+        }
+
+        .elections .container_card .butn {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #333;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 16px;
+            color: #fff;
+        }
+
+        .elections .container_card .butn:hover {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #0047b3;
+            text-decoration: underline;
+            border-radius: 4px;
+            margin-top: 16px;
+            color: #fff;
+        }
+
+
+        .elections .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            /* Adjust column width for smaller screens */
+            gap: 10px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .events {
+            background: #f0f0f0;
+            min-height: 100vh;
+        }
+
+        .events .box-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 2rem 0;
+        }
+
+        .events .box-container .box {
+            width: 35rem;
+            box-shadow: 0 .3rem .5rem rgba(0, 0, 0, .3);
+            margin: 2rem 1.5rem;
+        }
+
+        .events .box-container .box img {
+            height: 23rem;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .events .box-container .box .content {
+            padding: 1rem;
+        }
+
+        .events .box-container .box .content span {
+            font-size: 1.5rem;
+            color: #666;
+        }
+
+        .events .box-container .box .content span i {
+            padding: 1rem 0;
+            color: #1dceed;
+        }
+
+        .events .box-container .box .content h3 {
+            font-size: 2.4rem;
+            color: #333;
+        }
+
+        .events .box-container .box .content:hover h3 {
+            text-decoration: underline;
+            color: #1dceed;
+        }
+
+        .events .box-container .box .content p {
+            color: #666;
+            font-size: 1.5rem;
+        }
+
+        .footer {
+            background-image: linear-gradient(to bottom, #007bff, #0047b3);
+
+        }
+
+        .footer .box-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 95%;
+            margin: 0 auto;
+        }
+
+        .footer .box-container .box {
+            margin: 2rem;
+            flex: 1 1 25rem;
+        }
+
+        .footer .image-container2 {
+            width: 400px;
+        }
+
+        .footer .image-container2 img {
+            width: 400px;
+            height: auto;
+        }
+
+        .footer .box-container .box p {
+            font-size: 1.7rem;
+            color: #ccc;
+            padding: 1rem 0;
+        }
+
+        .footer .box-container .box:nth-child(2) a {
+            text-align: center;
+            font-size: 1.7rem;
+            color: #eee;
+            display: block;
+            padding: .5rem 0;
+        }
+
+        .footer .box-container .box:nth-child(2) a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .box-container .box .letter {
+            font-size: 3rem;
+            color: white;
+        }
+
+        .footer .box-container .box form input[type="email"] {
+            padding: 0 1rem;
+            outline: none;
+            border: .2rem solid #1dceed;
+            background: none;
+            font-size: 1.7rem;
+            color: white;
+            height: 4rem;
+            width: 74%;
+        }
+
+        .footer .box-container .box form button {
+            outline: none;
+            border: none;
+            background: #1dceed;
+            font-size: 1.9rem;
+            color: #fff;
+            height: 4rem;
+            width: 25%;
+            cursor: pointer;
+        }
+
+        .footer .box-container .box form button:hover {
+            color: #1dceed;
+            background: none;
+            border: .1rem solid aqua;
+        }
+
+        .footer .credit {
+            text-align: center;
+            color: #fff;
+            font-size: 2rem;
+            width: 85%;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            border-top: .1rem solid #ccc;
+        }
+
+        .footer .credit span {
+            color: #1dceed;
+        }
+
+
+
+
+
+
+
+        /* media queries  */
+
+        @media (max-width:768px) {
+
+            html {
+                font-size: 55%;
+            }
+
+            header .fa-bars {
+                display: block;
+            }
+
+            header .navbar {
+                position: fixed;
+                top: -100rem;
+                left: 0;
+                width: 100%;
+                border-top: .1rem solid #ccc;
+                opacity: 0;
+            }
+
+            header .navbar ul {
+                flex-flow: column;
+                padding: 10px;
+                background-color: #fff;
+            }
+
+            header .navbar ul li {
+                width: 100%;
+                text-align: center;
+                margin: 10px;
+            }
+
+            header .navbar ul li a {
+                font-size: 15px;
+                display: block;
+                text-align: left;
+                padding: 5px;
+            }
+
+            .fa-times {
+                transform: rotate(180deg);
+            }
+
+            header .nav-toggle {
+                top: 6rem;
+                opacity: 1;
+            }
+
+
+            header .image-container1 {
+                width: 150px;
+            }
+
+            header .image-container1 img {
+                width: 100px;
+                height: auto;
+            }
+
+            .home .content h1 {
+                font-size: 5rem;
+            }
+
+            .home .content p {
+                width: auto;
+            }
+
+            .elections .container_card h3 {
+
+                font-size: 24px;
+
+            }
+
+            .elections .container_card p {
+
+                font-size: 14px;
+
+            }
+
+            .elections .card-grid {
+
+                grid-template-columns: repeat(2, 1fr);
+
+            }
+
+
+        }
+
+        @media (max-width: 480px) {
+
+            .elections .card-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- header section starts  -->
+
+    <header>
+
+        <div class="image-container1">
+            <img src="images/sac.jpg" alt="SAC Image">
+        </div>
+
+
+        <nav class="navbar">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#verticles">Verticles</a></li>
+                <li><a href="#elections">Elections</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="admin/admin_login.php">Welcome</a></li>
+            </ul>
+        </nav>
+
+        <div class="fas fa-bars"></div>
+
+    </header>
+
+    <!-- header section ends -->
+
+    <!-- home section starts  -->
+
+    <section class="home" id="home">
+
+
+        <div class="content">
+
+            <h1>Student Activity Council</h1>
+            <p>SAC extends its roots to every student who wants to develop professionally, socially, contribute to a
+                team and be inspiringly successful.</p>
+            <a href="#about"><button class="btn">Explore</button></a>
+
+        </div>
+
+    </section>
+
+    <!-- home section ends -->
+
+    <div class="social-box">
+        <a href="https://www.facebook.com/vignanuniversityofficial?mibextid=ZbWKwL"><i
+                class="fa-brands fa-square-facebook"></i></a>
+        <a href="https://www.instagram.com/vignanuniversityofficial?igsh=MTNkdnVtaGgxMGFndg=="><i
+                class="fa-brands fa-square-instagram"></i></a>
+        <a href="https://x.com/VFSTR_Vignan?t=ibDtfu5W9MUXVa5mM5UBSw&s=09"><i
+                class="fa-brands fa-square-x-twitter"></i></a>
+        <a href="https://youtube.com/@VignanUniversityAP?si=Xf_SuiRuRaaS40_p"><i
+                class="fa-brands fa-square-youtube"></i></a>
+    </div>
+
+
+    <!-- about section starts  -->
+
+    <section class="about" id="about">
+
+        <h1 class="heading"> <i class="fas fa-quote-left"></i> about us <i class="fas fa-quote-right"></i> </h1>
+
+        <div class="row">
+
+            <div class="image">
+                <img src="images/sac.jpg" alt="">
+            </div>
+            <div class="image">
+                <img src="images/sac.jpg" alt="">
+            </div>
+            <div class="image">
+                <img src="images/sac.jpg" alt="">
+            </div>
+            <div class="image">
+                <img src="images/sac.jpg" alt="">
+            </div>
+
+            <div class="content">
+                <h3>STUDENTS ACTIVITY COUNCIL</h3>
+                <p>In a student's life, education is not solely about academics, rhetorical studies, lectures and
+                    seminars but
+                    about learning many more important social and life skills like leadership skills, group dynamics
+                    etc., Vignan's
+                    Foundation for Science, Technology and Research University truly believes in this fact.</p>
+                <p>The Student Activities Council of 80 members is elected annually from among the nominees and
+                    selections done through a democratic process involving a panel of faculty members and student
+                    representatives drawn
+                    from across all departments. It has a President, Vice Presidents, General Secretaries, Member
+                    Secretaries and a
+                    Treasurer, supported by a sub-structure of various committees, who plan, organize and execute a
+                    plethora of Co
+                    and Extracurricular events and competitions on campus in various verticles mentioned below. The
+                    student activities council has emerged
+                    truly
+                    on the distinct determination and inseparable co-ordination of the students in working towards
+                    success.</p>
+                <p>There are 13 optional clubs categorized into four major groups such as cultural, Literary, fine arts
+                    and
+                    Innovators club which are overseen by the Student ActivitiesCouncil of the institution.</p>
+            </div>
+
+        </div>
+
+        <div class="box-container">
+
+            <div class="box">
+                <i class="fas fa-users"></i>
+                <h3>1000+</h3>
+                <p>volunteers</p>
+            </div>
+
+            <div class="box">
+                <i class="fas fa-tree"></i>
+                <h3>1300+</h3>
+                <p>trees planted</p>
+            </div>
+
+            <div class="box">
+                <i class="fas fa-paw"></i>
+                <h3>450+</h3>
+                <p>animals saved</p>
+            </div>
+
+            <div class="box">
+                <i class="fas fa-donate"></i>
+                <h3>850+</h3>
+                <p>donators</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- about section ends -->
+
+    <!-- verticles section starts  -->
+
+    <section class="verticles" id="verticles">
+
+        <h1 class="heading"> <i class="fas fa-quote-left"></i> The Verticles <i class="fas fa-quote-right"></i> </h1>
+        <div class="card-grid">
+            <div class="card ">
+                <img src="images/Music.jpeg" alt="Music_Club"></a>
+                <div class="container_card">
+                    <h3>Music Club</h3>
+                    <p>Where words fail, music speaks, It is the universal Language of mankind.</p>
+                    <a href="clubs/Music_Club.html" class="butn">Read More</a>
+                </div>
+            </div>
+            <div class=" card">
+                <img src="images/Dance.jpg" alt="Dance_Club"></a>
+                <div class="container_card">
+                    <h3>Dance Club</h3>
+                    <p>Dance is an embodiment of Rhythm, blends movement & expression.</p>
+                    <a href="clubs/Dance_Club.html" class="butn">Read More</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/Literary.jpeg" alt="Literary_Club"></a>
+                <div class="container_card">
+                    <h3>Literary Club</h3>
+                    <p>Where words fail, music speaks, It is the universal Language of mankind.</p>
+                    <a href="clubs/Literary_Club.html" class="butn">Read More</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/Theatre Arts.png" alt="Music_Club"></a>
+                <div class="container_card">
+                    <h3>Theatre Arts Club</h3>
+                    <p>Theatre Arts is a form of Storytelling, Acting, Direction, And Stagecraft.</p>
+                    <a href="clubs/Theatre_Arts_Club.html" class="butn">Read More</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/s&m.jpeg" alt="Literary_Club"></a>
+                <div class="container_card">
+                    <h4>Stage Management Club</h4>
+                    <p>Where words fail, music speaks, It is the universal Language of mankind.</p>
+                    <a href="clubs/Stage&Management_Club.html" class="butn">Read More</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/logistics.png" alt="Literary_Club"></a>
+                <div class="container_card">
+                    <h3>Logistics Club</h3>
+                    <p>Where words fail, music speaks, It is the universal Language of mankind.</p>
+                    <a href="clubs/Logistics_Club.html" class="butn">Read More</a>
+                </div>
+            </div>
+            <div class="card ">
+                <img src="images/PR & DM.jpg" alt="Music_Club"></a>
+                <div class="container_card">
+                    <h3>PR & DM</h3>
+                    <p>Core oversee a diverse events across Various Functional Domains.</p>
+                    <a href="clubs/PR&DM.html" class="butn">Read More</a>
+                </div>
+            </div>
+            <div class="card ">
+                <img src="images/Techdesign.jpg" alt="Music_Club"></a>
+                <div class="container_card">
+                    <h3>Technical Design</h3>
+                    <p>Core oversee a diverse events across Various Functional Domains.</p>
+                    <a href="clubs/TechDesign.html" class="butn">Read More</a>
+                </div>
+            </div>
+            <div class="card ">
+                <img src="images/Photo&Video.jpg" alt="Music_Club"></a>
+                <div class="container_card">
+                    <h4>Photography and Video Editing</h4>
+                    <p>Core oversee a diverse events across Various Functional Domains.</p>
+                    <a href="clubs/Photo&Video.html" class="butn">Read More</a>
+                </div>
+            </div>
+            <div class="card ">
+                <img src="images/core_SAC.jpg" alt="Music_Club"></a>
+                <div class="container_card">
+                    <h3>Core</h3>
+                    <p>Core oversee a diverse events across Various Functional Domains.</p>
+                    <a href="clubs/Core_SAC.html" class="butn">Read More</a>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <!-- verticles section ends -->
+
+    <!-- elections section starts -->
+    <section class="elections" id="elections">
+
+        <h1 class="heading"> <i class="fas fa-quote-left"></i> Elections <i class="fas fa-quote-right"></i> </h1>
+        <div class="card-grid">
+            <div class="card">
+                <img src="images/Nominations.jpeg" alt="Nominations"></a>
+                <div class="container_card">
+                    <h3>Nominations</h3>
+                    <p>Where words fail, music speaks, It is the universal Language of mankind.</p>
+                    <a href="Nominee_rules.html" class="butn">Nominate</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/Voting.png" alt="Vote"></a>
+                <div class="container_card">
+                    <h3>Vote Now</h3>
+                    <p>Where words fail, music speaks, It is the universal Language of mankind.</p>
+                    <a href="sac_mem_login.php" class="butn">Vote Now</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/SAC_Results.jpg" alt="Nominations"></a>
+                <div class="container_card">
+                    <h3>Results</h3>
+                    <p>Where words fail, music speaks, It is the universal Language of mankind.</p>
+                    <a href="SAC_Pie.php" class="butn">View Results</a>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </section>
+
+    <!-- elections section ends -->
+
+    <!-- events section starts  -->
+
+    <section class="events" id="events">
+
+        <h1 class="heading"> <i class="fas fa-quote-left"></i> our recent events <i class="fas fa-quote-right"></i>
+        </h1>
+
+        <div class="box-container">
+
+            <div class="box">
+                <img src="images/img1.jpg" alt="">
+                <div class="content">
+                    <span> <i class="fas fa-calendar"></i> jan 2, 2021 </span>
+                    <h3>Mahotsav</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo veritatis nostrum voluptates cumque
+                        deserunt incidunt, minus mollitia rem molestiae ad.</p>
+                    <a href="#"><button class="btn">Read More</button></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src="images/img3.jpg" alt="">
+                <div class="content">
+                    <span> <i class="fas fa-calendar"></i> jan 3, 2021 </span>
+                    <h3>Srujanankura</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo veritatis nostrum voluptates cumque
+                        deserunt incidunt, minus mollitia rem molestiae ad.</p>
+                    <a href="#"><button class="btn">Read More</button></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src="images/img6.jpg" alt="">
+                <div class="content">
+                    <span> <i class="fas fa-calendar"></i> jan 8, 2021 </span>
+                    <h3>NAAC</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo veritatis nostrum voluptates cumque
+                        deserunt incidunt, minus mollitia rem molestiae ad.</p>
+                    <a href="#"><button class="btn">Read More</button></a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- events section ends -->
+
+    <!-- gallery section starts  -->
+
+    <section class="gallery" id="gallery">
+
+        <h1 class="heading"> <i class="fas fa-quote-left"></i> Image Gallery <i class="fas fa-quote-right"></i> </h1>
+
+        <div class="box-container">
+
+            <div class="box">
+                <img src="" alt="">
+                <div class="icons">
+                    <a style="--i:1;" href="#" class="fas fa-heart"></a>
+                    <a style="--i:2;" href="#" class="fas fa-share"></a>
+                    <a style="--i:3;" href="#" class="fas fa-comment"></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src="images/img2.jpg" alt="">
+                <div class="icons">
+                    <a style="--i:1;" href="#" class="fas fa-heart"></a>
+                    <a style="--i:2;" href="#" class="fas fa-share"></a>
+                    <a style="--i:3;" href="#" class="fas fa-comment"></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src="images/img3.jpg" alt="">
+                <div class="icons">
+                    <a style="--i:1;" href="#" class="fas fa-heart"></a>
+                    <a style="--i:2;" href="#" class="fas fa-share"></a>
+                    <a style="--i:3;" href="#" class="fas fa-comment"></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src="images/4.png" alt="">
+                <div class="icons">
+                    <a style="--i:1;"
+                        href="https://www.instagram.com/reel/CtWLAFGg9SB/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                        class="fas fa-heart"></a>
+                    <a style="--i:2;"
+                        href="https://www.instagram.com/reel/CtWLAFGg9SB/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                        class="fas fa-share"></a>
+                    <a style="--i:3;"
+                        href="https://www.instagram.com/reel/CtWLAFGg9SB/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                        class="fas fa-comment"></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src="images/2.png" alt="">
+                <div class="icons">
+                    <a style="--i:1;" href="#" class="fas fa-heart"></a>
+                    <a style="--i:2;" href="#" class="fas fa-share"></a>
+                    <a style="--i:3;" href="#" class="fas fa-comment"></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src="images/img6.jpg" alt="">
+                <div class="icons">
+                    <a style="--i:1;" href="#" class="fas fa-heart"></a>
+                    <a style="--i:2;" href="#" class="fas fa-share"></a>
+                    <a style="--i:3;" href="#" class="fas fa-comment"></a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- gallery section ends -->
+
+    <!-- footer section starts  -->
+
+    <section class="footer">
+
+        <div class="box-container">
+            <div class="box">
+                <div class="image-container2">
+                    <img src="images/vignan_logo.jpg" alt="Vfstr Image">
+                </div>
+            </div>
+
+            <div class="box">
+                <h3 class="letter">newsletter</h3>
+                <form action="">
+                    <input type="email" placeholder="enter your email">
+                    <button type="submit" class="fas fa-paper-plane"></button>
+                </form>
+            </div>
+
+        </div>
+
+        <h1 class="credit">Vignan's Foundation for Science, Technology and Research | all rights reserved. </h1>
+
+    </section>
+
+    <!-- footer section ends -->
+    <br>
+    <center><a href="logout.php"><button class="btn">Log out</button></a></center>
+    <br><br>
+
+    <script>
+        let menu = document.querySelector('.fa-bars');
+        let navbar = document.querySelector('.navbar');
+
+        menu.addEventListener('click', function () {
+            menu.classList.toggle('fa-times');
+            navbar.classList.toggle('nav-toggle');
+        });
+
+        window.addEventListener('scroll', () => {
+            menu.classList.remove('fa-times');
+            navbar.classList.remove('nav-toggle');
+        });
+    </script>
+</body>
+
+</html>
